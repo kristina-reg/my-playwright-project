@@ -11,10 +11,10 @@ test('Page loads and has title', async ({ page }) => {
     `);
 
   // Verify that home page is visible successfully
-  await expect(page.getByRole('link', { name: ' Home' })).toBeVisible();
+ await expect(page.getByRole('link', { name: /home/i })).toBeVisible();
 
   // Click on 'Signup / Login' button
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.getByRole('link', { name: /signup.*login/i }).click();
 });
 
 test('New User Signup', async ({ page }) => {
@@ -25,11 +25,12 @@ test('New User Signup', async ({ page }) => {
 
   // Enter name and email address
   await page.fill('input[name="name"]', 'Test User');
-  await page.fill('input[name="email"]', 'test.user0726@example.com');
+  const randomEmail = `test.user.${Date.now()}@example.com`;
+  await page.fill('input[name="email"]', randomEmail);
 
   // Click 'Signup' button
   await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').click();
-  await page.getByRole('button', { name: 'Signup' }).click();
+  await page.getByRole('button', { name: /signup/i }).click();
 });
 
 test('Account information', async ({ page }) => {
