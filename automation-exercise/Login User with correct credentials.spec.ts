@@ -35,7 +35,7 @@ test('Login and Delete account', async ({ page }) => {
   //Verify that 'Logged in as username' is visible
   await expect(page.getByText('Logged in as Auto')).toBeVisible();
 
-  //(Optional)Click 'Delete Account' button and verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+  //(Optional) Click 'Delete Account' button and verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
   //Uncomment below lines only when safe to do so:
 
   //await page.getByRole('link', { name: ' Delete Account' }).click();
