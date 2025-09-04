@@ -11,10 +11,10 @@ test('Page loads and has title', async ({ page }) => {
     `);
 
   // Verify that home page is visible successfully
-  await expect(page.getByRole('link', { name: ' Home' })).toBeVisible();
+  await page.getByRole('link', { name: /home/i }).click();
 
   // Click on 'Signup / Login' button
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.getByRole('link', { name: /signup.*login/i }).click();
 });
 
 test('Login', async ({ page }) => {

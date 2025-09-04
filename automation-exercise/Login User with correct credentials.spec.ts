@@ -11,10 +11,10 @@ test('Page loads and has title', async ({ page }) => {
     `);
 
   // Verify that home page is visible successfully
-  await expect(page.getByRole('link', { name: ' Home' })).toBeVisible();
+  await page.getByRole('link', { name: /home/i }).click();
 
   // Click on 'Signup / Login' button
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.getByRole('link', { name: /signup.*login/i }).click();
 });
 
 test('Login and Delete account', async ({ page }) => {
@@ -35,11 +35,11 @@ test('Login and Delete account', async ({ page }) => {
   //Verify that 'Logged in as username' is visible
   await expect(page.getByText('Logged in as Auto')).toBeVisible();
 
-  //Click 'Delete Account' button
- // await page.getByRole('link', { name: ' Delete Account' }).click();
+  //(Optional) Click 'Delete Account' button and verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+  //Uncomment below lines only when safe to do so:
 
-  //Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-//  await page.getByText('Account Deleted! Your account').click();
- // await page.getByRole('link', { name: 'Continue' }).click();
+  //await page.getByRole('link', { name: ' Delete Account' }).click();
+  //await page.getByText('Account Deleted! Your account').click();
+  //await page.getByRole('link', { name: 'Continue' }).click();
 });
 
