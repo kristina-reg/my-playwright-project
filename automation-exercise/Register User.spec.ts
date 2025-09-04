@@ -99,7 +99,6 @@ test('Account Created and Delete', async ({ page }) => {
 
   //Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
   await page.getByText('Account Deleted! Your account').click();
-  await page.getByRole('link', { name: 'Continue' }).click();
-  
+  await page.getByRole('link', { name: 'Continue' }).click();  
 });
 
